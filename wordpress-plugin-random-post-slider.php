@@ -3,12 +3,14 @@
 /*
 Plugin Name: Wordpress plugin random post slider
 Plugin URI: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
-Description:  Wordpress plugin random post slider create a post slider on the wordpress website.
+Description: Wordpress plugin random post slider create a post slider on the wordpress website.
 Author: Gopi.R
-Version: 7.0
+Version: 8.0
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Tags: wordpress, plugin, random, post, slider
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 global $wpdb, $wp_version;
@@ -16,30 +18,30 @@ global $wpdb, $wp_version;
 function gopiplushome() 
 {
 	global $wpdb;
-	@$displaydate = get_option('gopiplus_displaydate');
-	@$displaycategory = get_option('gopiplus_displaycategory');
-	@$displaycomment = get_option('gopiplus_displaycomment');
-	@$displayimage = get_option('gopiplus_displayimage');
-	@$displaytag = get_option('gopiplus_displaytag');
-	@$displaydesc = get_option('gopiplus_displaydesc');
-	@$displayreadmore = get_option('gopiplus_displayreadmore');
-	@$qp_showposts = get_option('gopiplus_query_posts_showposts');
-	@$qp_orderby = get_option('gopiplus_query_posts_orderby');
-	@$qp_order = get_option('gopiplus_query_posts_order');
-	@$qp_category = get_option('gopiplus_query_posts_category');
-	@$slider = get_option('gopiplus_query_slider');
+	$displaydate = get_option('gopiplus_displaydate');
+	$displaycategory = get_option('gopiplus_displaycategory');
+	$displaycomment = get_option('gopiplus_displaycomment');
+	$displayimage = get_option('gopiplus_displayimage');
+	$displaytag = get_option('gopiplus_displaytag');
+	$displaydesc = get_option('gopiplus_displaydesc');
+	$displayreadmore = get_option('gopiplus_displayreadmore');
+	$qp_showposts = get_option('gopiplus_query_posts_showposts');
+	$qp_orderby = get_option('gopiplus_query_posts_orderby');
+	$qp_order = get_option('gopiplus_query_posts_order');
+	$qp_category = get_option('gopiplus_query_posts_category');
+	$slider = get_option('gopiplus_query_slider');
 	
-	if(!is_numeric(@$displaydesc)) { @$displaydesc = 300; } 
-	if(!is_numeric(@$qp_showposts)) { @$qp_showposts = 3; } 
+	if(!is_numeric($displaydesc)) { $displaydesc = 300; } 
+	if(!is_numeric($qp_showposts)) { $qp_showposts = 3; } 
 	
 	@$myfilter = "";
 	
-	if(@$qp_showposts <> ""){ @$myfilter = "showposts=".$qp_showposts; }
-	if(@$qp_orderby <> ""){ @$myfilter = @$myfilter."&orderby=".$qp_orderby; }
-	if(@$qp_order <> ""){ @$myfilter = @$myfilter."&order=".$qp_order; }
-	if(@$qp_category <> ""){ @$myfilter = @$myfilter."&cat=".$qp_category; }
+	if($qp_showposts <> ""){ $myfilter = "showposts=".$qp_showposts; }
+	if($qp_orderby <> ""){ $myfilter = $myfilter."&orderby=".$qp_orderby; }
+	if($qp_order <> ""){ $myfilter = $myfilter."&order=".$qp_order; }
+	if($qp_category <> ""){ $myfilter = $myfilter."&cat=".$qp_category; }
 	
-	if(@$slider == ""){ @$slider = "scrollLeft"; }
+	if($slider == ""){ $slider = "scrollLeft"; }
 	//echo $myfilter;
 	?>
 	<!-- begin gopiplushome -->
@@ -102,8 +104,8 @@ function gopiplushome()
 	?>
 	</div>
     <script type="text/javascript">
-    $(function() {
-	$('#gopiplushome').cycle({
+    jQuery(function() {
+	jQuery('#gopiplushome').cycle({
 		fx: '<?php echo @$slider; ?>',
 		speed: 700,
 		timeout: 5000
@@ -266,52 +268,47 @@ function gopiplus_admin_options()
 	?>
 	<h2>Plugin configuration</h2>
     <ol>
-    <li><a href="http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/" target="_blank">Add directly in to theme</a></li>
-    <li><a href="http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/" target="_blank">Add the gallery in the page using short code</a></li>
+    	<li>Add directly in to theme</li>
+    	<li>Add the gallery in the page using short code</li>
     </ol>
 	Check official website for more details <a href="http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/" target="_blank">click here</a>
     <?php
 }
 
-add_filter('the_content','gopiplus_show_filter');
-
-function gopiplus_show_filter($content)
-{
-	return 	preg_replace_callback('/\[WP-POST-SLIDER(.*?)\]/sim','gopiplus_show_filter_callback',$content);
-}
-
-function gopiplus_show_filter_callback($matches) 
+# gopiplus shortcode
+function gopiplus_shortcode( $atts ) 
 {
 	global $wpdb;
+	//[wp-post-slider]
+	
 	$sSqlMin = "";
 	$gopiplushome = "";
 	$post_tag = "";
 	
-	
-	@$displaydate = get_option('gopiplus_displaydate');
-	@$displaycategory = get_option('gopiplus_displaycategory');
-	@$displaycomment = get_option('gopiplus_displaycomment');
-	@$displayimage = get_option('gopiplus_displayimage');
-	@$displaytag = get_option('gopiplus_displaytag');
-	@$displaydesc = get_option('gopiplus_displaydesc');
-	@$displayreadmore = get_option('gopiplus_displayreadmore');
-	@$qp_showposts = get_option('gopiplus_query_posts_showposts');
-	@$qp_orderby = get_option('gopiplus_query_posts_orderby');
-	@$qp_order = get_option('gopiplus_query_posts_order');
-	@$qp_category = get_option('gopiplus_query_posts_category');
-	@$slider = get_option('gopiplus_query_slider');
+	$displaydate = get_option('gopiplus_displaydate');
+	$displaycategory = get_option('gopiplus_displaycategory');
+	$displaycomment = get_option('gopiplus_displaycomment');
+	$displayimage = get_option('gopiplus_displayimage');
+	$displaytag = get_option('gopiplus_displaytag');
+	$displaydesc = get_option('gopiplus_displaydesc');
+	$displayreadmore = get_option('gopiplus_displayreadmore');
+	$qp_showposts = get_option('gopiplus_query_posts_showposts');
+	$qp_orderby = get_option('gopiplus_query_posts_orderby');
+	$qp_order = get_option('gopiplus_query_posts_order');
+	$qp_category = get_option('gopiplus_query_posts_category');
+	$slider = get_option('gopiplus_query_slider');
 	
 	if(!is_numeric(@$displaydesc)) { @$displaydesc = 300; } 
 	if(!is_numeric(@$qp_showposts)) { @$qp_showposts = 10; } 
 	
 	@$myfilter = "";
 	
-	//if(@$qp_showposts <> ""){ @$myfilter = "showposts=".$qp_showposts; }
-//	if(@$qp_orderby <> ""){ @$myfilter = @$myfilter."&orderby=".$qp_orderby; }
-//	if(@$qp_order <> ""){ @$myfilter = @$myfilter."&order=".$qp_order; }
-//	if(@$qp_category <> ""){ @$myfilter = @$myfilter."&cat=".$qp_category; }
+	//	if(@$qp_showposts <> ""){ @$myfilter = "showposts=".$qp_showposts; }
+	//	if(@$qp_orderby <> ""){ @$myfilter = @$myfilter."&orderby=".$qp_orderby; }
+	//	if(@$qp_order <> ""){ @$myfilter = @$myfilter."&order=".$qp_order; }
+	//	if(@$qp_category <> ""){ @$myfilter = @$myfilter."&cat=".$qp_category; }
 	
-	if(@$slider == ""){ @$slider = "scrollLeft"; }
+	if($slider == ""){ $slider = "scrollLeft"; }
 	
 	$gopiplushome = $gopiplushome . '<div id="gopipluspages">';
 	//echo $myfilter;
@@ -323,32 +320,32 @@ function gopiplus_show_filter_callback($matches)
 	$sSqlMin = $sSqlMin . "inner join ". $wpdb->prefix . "posts p on p.ID = wpr.object_id ";
 	$sSqlMin = $sSqlMin . "where taxonomy= 'category' and p.post_type = 'post' and p.post_status = 'publish' ";
 	
-	if(@$qp_category <> "")
+	if($qp_category <> "")
 	{
 		$sSqlMin = $sSqlMin . " and ". $wpdb->prefix . "terms.term_id in ($qp_category)";
 	}
 	
-	if(@$qp_orderby == "date")
+	if($qp_orderby == "date")
 	{
 		$sSqlMin = $sSqlMin . " order by p.post_date";
 	}
-	elseif(@$qp_orderby == "modified")
+	elseif($qp_orderby == "modified")
 	{
 		$sSqlMin = $sSqlMin . " order by p.post_modified";
 	}
-	elseif(@$qp_orderby == "title")
+	elseif($qp_orderby == "title")
 	{
 		$sSqlMin = $sSqlMin . " order by p.post_title";
 	}
-	elseif(@$qp_orderby == "ID")
+	elseif($qp_orderby == "ID")
 	{
 		$sSqlMin = $sSqlMin . " order by p.ID";
 	}
-	elseif(@$qp_orderby == "category")
+	elseif($qp_orderby == "category")
 	{
 		$sSqlMin = $sSqlMin . " order by " . $wpdb->prefix . "terms.name";
 	}
-	elseif(@$qp_orderby == "author")
+	elseif($qp_orderby == "author")
 	{
 		$sSqlMin = $sSqlMin . " order by p.post_author";
 	}
@@ -359,7 +356,7 @@ function gopiplus_show_filter_callback($matches)
 	
 	$sSqlMin = $sSqlMin . " DESC";
 	
-	if(@$qp_showposts > 0 )
+	if($qp_showposts > 0 )
 	{
 		$sSqlMin = $sSqlMin . " LIMIT 0 , $qp_showposts";
 	}
@@ -367,9 +364,6 @@ function gopiplus_show_filter_callback($matches)
 	{
 		$sSqlMin = $sSqlMin . " LIMIT 0 , 10";
 	}
-	
-	 //echo $sSqlMin;
-	 //$sSql = query_posts($myfilter);
 	
 	$sSql = $wpdb->get_results($sSqlMin);
 	
@@ -411,7 +405,6 @@ function gopiplus_show_filter_callback($matches)
 			  $comma_separated_tagnames = implode(", ", $tagnames);
 			  $post_tag = "Tag : " . $comma_separated_tagnames;
 			}
-			
 		
 			$gopiplushome = $gopiplushome . '<p class="details">';
 			
@@ -462,8 +455,8 @@ function gopiplus_show_filter_callback($matches)
 	$gopiplushome = $gopiplushome . "</div>";
 	
     $gopiplushome = $gopiplushome . '<script type="text/javascript">';
-    $gopiplushome = $gopiplushome . '$(function() {';
-	$gopiplushome = $gopiplushome . "$('#gopipluspages').cycle({fx: '".$slider."',speed: 700,timeout: 5000";
+    $gopiplushome = $gopiplushome . 'jQuery(function() {';
+	$gopiplushome = $gopiplushome . "jQuery('#gopipluspages').cycle({fx: '".$slider."',speed: 700,timeout: 5000";
 	$gopiplushome = $gopiplushome . '});';
 	$gopiplushome = $gopiplushome . '});';
 	$gopiplushome = $gopiplushome . '</script>';
@@ -486,18 +479,18 @@ function gopiplus_deactivation()
 	
 }
 
-
 function gopiplus_add_javascript_files() 
 {
 	if (!is_admin())
 	{
-		wp_enqueue_script( 'jquery-1.3.2.min', get_option('siteurl').'/wp-content/plugins/wordpress-plugin-random-post-slider/js/jquery-1.3.2.min.js');
-		wp_enqueue_script( 'jquery.cycle.all.min', get_option('siteurl').'/wp-content/plugins/wordpress-plugin-random-post-slider/js/jquery.cycle.all.min.js');
+		wp_enqueue_script('jquery');
+		wp_enqueue_script( 'jquery.cycle.all.latest', get_option('siteurl').'/wp-content/plugins/wordpress-plugin-random-post-slider/js/jquery.cycle.all.latest.js');
 		wp_enqueue_style( 'wordpress-plugin-random-post-slider', get_option('siteurl').'/wp-content/plugins/wordpress-plugin-random-post-slider/wordpress-plugin-random-post-slider.css');
 	}	
 }
-add_action('init', 'gopiplus_add_javascript_files');
 
+add_shortcode( 'wp-post-slider', 'gopiplus_shortcode' );
+add_action('init', 'gopiplus_add_javascript_files');
 register_activation_hook(__FILE__, 'gopiplus_install');
 register_deactivation_hook(__FILE__, 'gopiplus_deactivation');
 ?>

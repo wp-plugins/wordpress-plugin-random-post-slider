@@ -5,8 +5,10 @@ Author URI: http://www.gopiplus.com/work/
 Plugin URI: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Tags: wordpress, plugin, random, post, slider
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 7.0
+Tested up to: 3.5
+Stable tag: 8.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
 This plugin create a post slider on the wordpress website. We have option to customize the slider direction.
 
@@ -96,13 +98,19 @@ http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 
 == Upgrade Notice ==
 
+8.0
+
+Tested up to WordPress 3.5
+Avoid registering the alternate jQuery.
+From this version we are using existing wordpress jQuery.
+
 7.0
 
-New demo link, www.gopiplus.com
+New demo link, http://www.gopiplus.com
 
 6.0
 
-Tested UpTo 3.4
+Tested up to 3.4
 
 5.0
 
@@ -110,11 +118,11 @@ wp_reset_query(); has been added.
 
 4.0
 
-Tested UpTo 3.3
+Tested up to 3.3
 
 3.0
 
-Tested UpTo 3.2.1
+Tested up to 3.2.1
 Javascript added using enqueue script.
 
 2.0						
@@ -137,12 +145,12 @@ First version.
 
 3.0
 
-Tested UpTo 3.2.1
+Tested up to 3.2.1
 Javascript added using enqueue script.
 
 4.0
 
-Tested UpTo 3.3
+Tested up to 3.3
 
 5.0
 
@@ -150,8 +158,14 @@ wp_reset_query(); has been added.
 
 6.0
 
-Tested UpTo 3.4
+Tested up to 3.4
 
 7.0
 
-New demo link, www.gopiplus.com
+New demo link, http://www.gopiplus.com
+
+8.0
+
+Tested up to WordPress 3.5
+Avoid registering the alternate jQuery.
+From this version we are using existing wordpress jQuery.
