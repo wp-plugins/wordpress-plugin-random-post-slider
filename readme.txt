@@ -4,9 +4,9 @@ Donate link: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-pos
 Author URI: http://www.gopiplus.com/work/
 Plugin URI: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Tags: wordpress, plugin, random, post, slider
-Requires at least: 3.0
-Tested up to: 3.5
-Stable tag: 8.0
+Requires at least: 3.4
+Tested up to: 3.6
+Stable tag: 9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -98,6 +98,11 @@ http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 
 == Upgrade Notice ==
 
+9.0
+
+Tested up to WordPress 3.6
+Added some security feature.
+
 8.0
 
 Tested up to WordPress 3.5
@@ -169,3 +174,8 @@ New demo link, http://www.gopiplus.com
 Tested up to WordPress 3.5
 Avoid registering the alternate jQuery.
 From this version we are using existing wordpress jQuery.
+
+9.0
+
+Tested up to WordPress 3.6
+Added some security feature.

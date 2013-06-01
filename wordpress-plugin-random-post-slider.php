@@ -5,7 +5,7 @@ Plugin Name: Wordpress plugin random post slider
 Plugin URI: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Description: Wordpress plugin random post slider create a post slider on the wordpress website.
 Author: Gopi.R
-Version: 8.0
+Version: 9.0
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Tags: wordpress, plugin, random, post, slider
@@ -14,6 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 global $wpdb, $wp_version;
+define('WP_gopiplushome_LINK', 'Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/">click here</a>');
 
 function gopiplushome() 
 {
@@ -177,11 +178,14 @@ function gopiplus_install()
 # Admin update option for default value
 function gopiplus_admin_options() 
 {
-	echo "<div class='wrap'>";
-	echo "<h2>"; 
-	echo "Random post slider";
-	echo "</h2>";
-	
+	?>
+	<div class="wrap">
+  <div class="form-wrap">
+    <div id="icon-edit" class="icon32 icon32-posts-post"><br>
+    </div>
+    <h2>Random post slider</h2>
+	<h3>Plugin setting</h3>
+	 <?php
 	$gopiplus_displaydate = get_option('gopiplus_displaydate');
 	$gopiplus_displaycategory = get_option('gopiplus_displaycategory');
 	$gopiplus_displaycomment = get_option('gopiplus_displaycomment');
@@ -197,6 +201,10 @@ function gopiplus_admin_options()
 
 	if (@$_POST['gopiplus_submit']) 
 	{
+		
+		//	Just security thingy that wordpress offers us
+		check_admin_referer('gopiplus_form_setting');
+		
 		$gopiplus_displaydate = stripslashes($_POST['gopiplus_displaydate']);
 		$gopiplus_displaycategory = stripslashes($_POST['gopiplus_displaycategory']);
 		$gopiplus_displaycomment = stripslashes($_POST['gopiplus_displaycomment']);
@@ -222,57 +230,70 @@ function gopiplus_admin_options()
 		update_option('gopiplus_query_posts_order', $gopiplus_query_posts_order );
 		update_option('gopiplus_query_posts_category', $gopiplus_query_posts_category );
 		update_option('gopiplus_query_slider', $gopiplus_query_slider );
+		
+		?>
+		<div class="updated fade">
+			<p><strong>Details successfully updated.</strong></p>
+		</div>
+		<?php
 	}
-	
-	echo '<form name="gopiplus_form" method="post" action="">';
-
-	echo '<p>Display Date:<br><input  style="width: 150px;" maxlength="3" type="text" value="';
-	echo $gopiplus_displaydate . '" name="gopiplus_displaydate" id="gopiplus_displaydate" /> (YES/NO)</p>';
-
-	echo '<p>Display Category:<br><input  style="width: 150px;" maxlength="3" type="text" value="';
-	echo $gopiplus_displaycategory . '" name="gopiplus_displaycategory" id="gopiplus_displaycategory" /> (YES/NO)</p>';
-
-	echo '<p>Display Comment:<br><input  style="width: 150px;" maxlength="3" type="text" value="';
-	echo $gopiplus_displaycomment . '" name="gopiplus_displaycomment" id="gopiplus_displaycomment" /> (YES/NO)</p>';
-
-	echo '<p>Display Image:<br><input  style="width: 150px;" maxlength="3" type="text" value="';
-	echo $gopiplus_displayimage . '" name="gopiplus_displayimage" id="gopiplus_displayimage" /> (YES/NO)</p>';
-
-	echo '<p>Display Tag:<br><input  style="width: 150px;" maxlength="3" type="text" value="';
-	echo $gopiplus_displaytag . '" name="gopiplus_displaytag" id="gopiplus_displaytag" /> (YES/NO)</p>';
-
-	echo '<p>Display Readmore:<br><input  style="width: 150px;" maxlength="3" type="text" value="';
-	echo $gopiplus_displayreadmore . '" name="gopiplus_displayreadmore" id="gopiplus_displayreadmore" /> (YES/NO)</p>';
-	
-	echo '<p>Display Content Length:<br><input  style="width: 200px;" maxlength="4" type="text" value="';
-	echo $gopiplus_displaydesc . '" name="gopiplus_displaydesc" id="gopiplus_displaydesc" /> (Only Number)</p>';
-
-	echo '<p>Number of post to display:<br><input  style="width: 200px;" maxlength="2" type="text" value="';
-	echo $gopiplus_query_posts_showposts . '" name="gopiplus_query_posts_showposts" id="gopiplus_query_posts_showposts" /> (Only Number)</p>';
-
-	echo '<p>Display post orderby:<br><input  style="width: 200px;" maxlength="100" type="text" value="';
-	echo $gopiplus_query_posts_orderby . '" name="gopiplus_query_posts_orderby" id="gopiplus_query_posts_orderby" /> (ID/author/title/rand/date/category/modified)</p>';
-
-	echo '<p>Display post order:<br><input  style="width: 200px;" maxlength="100" type="text" value="';
-	echo $gopiplus_query_posts_order . '" name="gopiplus_query_posts_order" id="gopiplus_query_posts_order" /> (ASC/DESC)</p>';
-
-	echo '<p>Display post Categories:<br><input  style="width: 200px;" maxlength="100" type="text" value="';
-	echo $gopiplus_query_posts_category . '" name="gopiplus_query_posts_category" id="gopiplus_query_posts_category" /> (Category IDs, separated by commas)</p>';
-	
-	echo '<p>Slider Direction:<br><input  style="width: 200px;" maxlength="100" type="text" value="';
-	echo $gopiplus_query_slider . '" name="gopiplus_query_slider" id="gopiplus_query_slider" /> (scrollLeft/scrollRight/scrollUp/scrollDown)</p>';
-	
-	echo '<input name="gopiplus_submit" id="gopiplus_submit" class="button-primary" value="Submit" type="submit" />';
-	echo '</form>';
-	echo '</div>';
-	?>
-	<h2>Plugin configuration</h2>
-    <ol>
-    	<li>Add directly in to theme</li>
-    	<li>Add the gallery in the page using short code</li>
-    </ol>
-	Check official website for more details <a href="http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/" target="_blank">click here</a>
-    <?php
+	 ?>
+	 <form name="gopiplus_form" method="post" action="">
+	  
+	  <label for="tag-title">Display Date</label>
+      <input name="gopiplus_displaydate" id="gopiplus_displaydate" type="text" value="<?php echo $gopiplus_displaydate; ?>" />
+      <p>(YES/NO)</p>
+	  
+	  <label for="tag-title">Display Category</label>
+      <input name="gopiplus_displaycategory" id="gopiplus_displaycategory" type="text" value="<?php echo $gopiplus_displaycategory; ?>" />
+      <p>(YES/NO)</p>
+	  
+	  <label for="tag-title">Display Comment</label>
+      <input name="gopiplus_displaycomment" id="gopiplus_displaycomment" type="text" value="<?php echo $gopiplus_displaycomment; ?>" />
+      <p>(YES/NO)</p>
+	  
+	  <label for="tag-title">Display Image</label>
+      <input name="gopiplus_displayimage" id="gopiplus_displayimage" type="text" value="<?php echo $gopiplus_displayimage; ?>" />
+      <p>(YES/NO)</p>
+	  
+	  <label for="tag-title">Display Tag</label>
+      <input name="gopiplus_displaytag" id="gopiplus_displaytag" type="text" value="<?php echo $gopiplus_displaytag; ?>" />
+      <p>(YES/NO)</p>
+	  
+	  <label for="tag-title">Display Readmore</label>
+      <input name="gopiplus_displayreadmore" id="gopiplus_displayreadmore" type="text" value="<?php echo $gopiplus_displayreadmore; ?>" />
+      <p>(YES/NO)</p>
+	  
+	  <label for="tag-title">Display Content Length</label>
+      <input name="gopiplus_displaydesc" id="gopiplus_displaydesc" type="text" value="<?php echo $gopiplus_displaydesc; ?>" />
+      <p>(Only Number)</p>
+	  
+	  <label for="tag-title">Number of post to display</label>
+      <input name="gopiplus_query_posts_showposts" id="gopiplus_query_posts_showposts" type="text" value="<?php echo $gopiplus_query_posts_showposts; ?>" />
+      <p>(Only Number)</p>
+	  
+	  <label for="tag-title">Display post orderby</label>
+      <input name="gopiplus_query_posts_orderby" id="gopiplus_query_posts_orderby" type="text" value="<?php echo $gopiplus_query_posts_orderby; ?>" />
+      <p>(ID / author / title / rand / date / category / modified)</p>
+	  
+	  <label for="tag-title">Display post order</label>
+      <input name="gopiplus_query_posts_order" id="gopiplus_query_posts_order" type="text" value="<?php echo $gopiplus_query_posts_order; ?>" />
+      <p>(ASC/DESC)</p>
+	  
+	  <label for="tag-title">Display post Categories</label>
+      <input name="gopiplus_query_posts_category" id="gopiplus_query_posts_category" type="text" value="<?php echo $gopiplus_query_posts_category; ?>" />
+      <p>(Category IDs, separated by commas)</p>
+	  
+	  <label for="tag-title">Slider Direction</label>
+      <input name="gopiplus_query_slider" id="gopiplus_query_slider" type="text" value="<?php echo $gopiplus_query_slider; ?>" />
+      <p>(scrollLeft / scrollRight / scrollUp / scrollDown)</p>
+	  <input name="gopiplus_submit" id="gopiplus_submit" class="button-primary" value="Submit" type="submit" />
+	  <?php wp_nonce_field('gopiplus_form_setting'); ?>
+	 </form>
+	 </div>
+  <br /><p class="description"><?php echo WP_gopiplushome_LINK; ?></p>
+</div>
+	<?php
 }
 
 # gopiplus shortcode
@@ -476,7 +497,7 @@ if (is_admin())
 
 function gopiplus_deactivation() 
 {
-	
+	// No action required.
 }
 
 function gopiplus_add_javascript_files() 
