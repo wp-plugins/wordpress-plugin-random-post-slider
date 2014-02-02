@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/
 Plugin URI: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Tags: wordpress, plugin, random, post, slider
 Requires at least: 3.4
-Tested up to: 3.6
-Stable tag: 9.0
+Tested up to: 3.8
+Stable tag: 9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -92,90 +92,102 @@ http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 
 == Screenshots ==
 
-1. http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
+1. Front Screen http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 
-2. http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
+2. Admin Screen http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 
 == Upgrade Notice ==
 
-9.0
+= 9.1 =
+
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (random-post-slider.po) available in the languages folder.
+
+= 9.0 =
 
 Tested up to WordPress 3.6
 Added some security feature.
 
-8.0
+= 8.0 =
 
 Tested up to WordPress 3.5
 Avoid registering the alternate jQuery.
 From this version we are using existing wordpress jQuery.
 
-7.0
+= 7.0 =
 
 New demo link, http://www.gopiplus.com
 
-6.0
+= 6.0 =
 
 Tested up to 3.4
 
-5.0
+= 5.0 =
 
 wp_reset_query(); has been added.
 
-4.0
+= 4.0 =
 
 Tested up to 3.3
 
-3.0
+= 3.0 =
 
 Tested up to 3.2.1
 Javascript added using enqueue script.
 
-2.0						
+= 2.0 =						
 			
 Category filter option issue fixed.
 
-1.0						
+= 1.0 =						
 			
 First version.		
 
 == Changelog ==
 
-2.0						
+= 2.0 =				
 			
 Category filter option issue fixed.
 
-1.0				
+= 1.0 =				
 					
 First version.
 
-3.0
+= 3.0 =
 
 Tested up to 3.2.1
 Javascript added using enqueue script.
 
-4.0
+= 4.0 =
 
 Tested up to 3.3
 
-5.0
+= 5.0 =
 
 wp_reset_query(); has been added.
 
-6.0
+= 6.0 =
 
 Tested up to 3.4
 
-7.0
+= 7.0 =
 
 New demo link, http://www.gopiplus.com
 
-8.0
+= 8.0 =
 
 Tested up to WordPress 3.5
 Avoid registering the alternate jQuery.
 From this version we are using existing wordpress jQuery.
 
-9.0
+= 9.0 =
 
 Tested up to WordPress 3.6
 Added some security feature.
+
+= 9.1 =
+
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (random-post-slider.po) available in the languages folder.

@@ -1,11 +1,10 @@
 <?php
-
 /*
 Plugin Name: Wordpress plugin random post slider
 Plugin URI: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Description: Wordpress plugin random post slider create a post slider on the wordpress website.
 Author: Gopi.R
-Version: 9.0
+Version: 9.1
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Tags: wordpress, plugin, random, post, slider
@@ -14,7 +13,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 global $wpdb, $wp_version;
-define('WP_gopiplushome_LINK', 'Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/">click here</a>');
 
 function gopiplushome() 
 {
@@ -35,7 +33,7 @@ function gopiplushome()
 	if(!is_numeric($displaydesc)) { $displaydesc = 300; } 
 	if(!is_numeric($qp_showposts)) { $qp_showposts = 3; } 
 	
-	@$myfilter = "";
+	$myfilter = "";
 	
 	if($qp_showposts <> ""){ $myfilter = "showposts=".$qp_showposts; }
 	if($qp_orderby <> ""){ $myfilter = $myfilter."&orderby=".$qp_orderby; }
@@ -183,8 +181,8 @@ function gopiplus_admin_options()
   <div class="form-wrap">
     <div id="icon-edit" class="icon32 icon32-posts-post"><br>
     </div>
-    <h2>Random post slider</h2>
-	<h3>Plugin setting</h3>
+    <h2><?php _e('Random post slider', 'random-post-slider'); ?></h2>
+	<h3><?php _e('Plugin setting', 'random-post-slider'); ?></h3>
 	 <?php
 	$gopiplus_displaydate = get_option('gopiplus_displaydate');
 	$gopiplus_displaycategory = get_option('gopiplus_displaycategory');
@@ -199,7 +197,7 @@ function gopiplus_admin_options()
 	$gopiplus_query_posts_category = get_option('gopiplus_query_posts_category');
 	$gopiplus_query_slider = get_option('gopiplus_query_slider');
 
-	if (@$_POST['gopiplus_submit']) 
+	if (isset($_POST['gopiplus_submit'])) 
 	{
 		
 		//	Just security thingy that wordpress offers us
@@ -233,65 +231,69 @@ function gopiplus_admin_options()
 		
 		?>
 		<div class="updated fade">
-			<p><strong>Details successfully updated.</strong></p>
+			<p><strong><?php _e('Details successfully updated.', 'random-post-slider'); ?></strong></p>
 		</div>
 		<?php
 	}
 	 ?>
 	 <form name="gopiplus_form" method="post" action="">
 	  
-	  <label for="tag-title">Display Date</label>
+	  <label for="tag-title"><?php _e('Display Date', 'random-post-slider'); ?></label>
       <input name="gopiplus_displaydate" id="gopiplus_displaydate" type="text" value="<?php echo $gopiplus_displaydate; ?>" />
-      <p>(YES/NO)</p>
+      <p><?php _e('Enter YES or NO only ', 'random-post-slider'); ?> (YES/NO)</p>
 	  
-	  <label for="tag-title">Display Category</label>
+	  <label for="tag-title"><?php _e('Display Category', 'random-post-slider'); ?></label>
       <input name="gopiplus_displaycategory" id="gopiplus_displaycategory" type="text" value="<?php echo $gopiplus_displaycategory; ?>" />
-      <p>(YES/NO)</p>
+      <p><?php _e('Enter YES or NO only ', 'random-post-slider'); ?> (YES/NO)</p>
 	  
-	  <label for="tag-title">Display Comment</label>
+	  <label for="tag-title"><?php _e('Display Comment', 'random-post-slider'); ?></label>
       <input name="gopiplus_displaycomment" id="gopiplus_displaycomment" type="text" value="<?php echo $gopiplus_displaycomment; ?>" />
-      <p>(YES/NO)</p>
+      <p><?php _e('Enter YES or NO only ', 'random-post-slider'); ?> (YES/NO)</p>
 	  
-	  <label for="tag-title">Display Image</label>
+	  <label for="tag-title"><?php _e('Display Image', 'random-post-slider'); ?></label>
       <input name="gopiplus_displayimage" id="gopiplus_displayimage" type="text" value="<?php echo $gopiplus_displayimage; ?>" />
-      <p>(YES/NO)</p>
+      <p><?php _e('Enter YES or NO only ', 'random-post-slider'); ?> (YES/NO)</p>
 	  
-	  <label for="tag-title">Display Tag</label>
+	  <label for="tag-title"><?php _e('Display Tag', 'random-post-slider'); ?></label>
       <input name="gopiplus_displaytag" id="gopiplus_displaytag" type="text" value="<?php echo $gopiplus_displaytag; ?>" />
-      <p>(YES/NO)</p>
+      <p><?php _e('Enter YES or NO only ', 'random-post-slider'); ?> (YES/NO)</p>
 	  
-	  <label for="tag-title">Display Readmore</label>
+	  <label for="tag-title"><?php _e('Display Readmore', 'random-post-slider'); ?></label>
       <input name="gopiplus_displayreadmore" id="gopiplus_displayreadmore" type="text" value="<?php echo $gopiplus_displayreadmore; ?>" />
-      <p>(YES/NO)</p>
+      <p><?php _e('Enter YES or NO only ', 'random-post-slider'); ?> (YES/NO)</p>
 	  
-	  <label for="tag-title">Display Content Length</label>
+	  <label for="tag-title"><?php _e('Display Content Length', 'random-post-slider'); ?></label>
       <input name="gopiplus_displaydesc" id="gopiplus_displaydesc" type="text" value="<?php echo $gopiplus_displaydesc; ?>" />
-      <p>(Only Number)</p>
+      <p><?php _e('Enter only number ', 'random-post-slider'); ?> (Ex: 300)</p>
 	  
-	  <label for="tag-title">Number of post to display</label>
+	  <label for="tag-title"><?php _e('Number of post to display', 'random-post-slider'); ?></label>
       <input name="gopiplus_query_posts_showposts" id="gopiplus_query_posts_showposts" type="text" value="<?php echo $gopiplus_query_posts_showposts; ?>" />
-      <p>(Only Number)</p>
+      <p><?php _e('Enter only number ', 'random-post-slider'); ?> (Ex: 3)</p>
 	  
-	  <label for="tag-title">Display post orderby</label>
+	  <label for="tag-title"><?php _e('Display post orderby', 'random-post-slider'); ?></label>
       <input name="gopiplus_query_posts_orderby" id="gopiplus_query_posts_orderby" type="text" value="<?php echo $gopiplus_query_posts_orderby; ?>" />
-      <p>(ID / author / title / rand / date / category / modified)</p>
+      <p><?php _e('Enter any one from the list ', 'random-post-slider'); ?> (ID / author / title / rand / date / category / modified)</p>
 	  
-	  <label for="tag-title">Display post order</label>
+	  <label for="tag-title"><?php _e('Display post order', 'random-post-slider'); ?></label>
       <input name="gopiplus_query_posts_order" id="gopiplus_query_posts_order" type="text" value="<?php echo $gopiplus_query_posts_order; ?>" />
-      <p>(ASC/DESC)</p>
+      <p><?php _e('Enter ASC or DESC only ', 'random-post-slider'); ?> (ASC/DESC)</p>
 	  
-	  <label for="tag-title">Display post Categories</label>
+	  <label for="tag-title"><?php _e('Display post Categories', 'random-post-slider'); ?></label>
       <input name="gopiplus_query_posts_category" id="gopiplus_query_posts_category" type="text" value="<?php echo $gopiplus_query_posts_category; ?>" />
-      <p>(Category IDs, separated by commas)</p>
+      <p><?php _e('Category IDs, separated by commas', 'random-post-slider'); ?> (Ex: 1, 2, 3)</p>
 	  
-	  <label for="tag-title">Slider Direction</label>
+	  <label for="tag-title"><?php _e('Slider Direction', 'random-post-slider'); ?></label>
       <input name="gopiplus_query_slider" id="gopiplus_query_slider" type="text" value="<?php echo $gopiplus_query_slider; ?>" />
-      <p>(scrollLeft / scrollRight / scrollUp / scrollDown)</p>
-	  <input name="gopiplus_submit" id="gopiplus_submit" class="button-primary" value="Submit" type="submit" />
+      <p><?php _e('Enter any one from the list', 'random-post-slider'); ?> (scrollLeft / scrollRight / scrollUp / scrollDown)</p>
+	  <input name="gopiplus_submit" id="gopiplus_submit" class="button-primary" value="<?php _e('Submit', 'random-post-slider'); ?>" type="submit" />
 	  <?php wp_nonce_field('gopiplus_form_setting'); ?>
 	 </form>
 	 </div>
-  <br /><p class="description"><?php echo WP_gopiplushome_LINK; ?></p>
+  <br />
+<p class="description">
+	<?php _e('Check official website for more information', 'random-post-slider'); ?>
+	<a target="_blank" href="http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/"><?php _e('click here', 'random-post-slider'); ?></a>
+</p>
 </div>
 	<?php
 }
@@ -305,6 +307,8 @@ function gopiplus_shortcode( $atts )
 	$sSqlMin = "";
 	$gopiplushome = "";
 	$post_tag = "";
+	$displaydesc = "";
+	$qp_showposts = "";
 	
 	$displaydate = get_option('gopiplus_displaydate');
 	$displaycategory = get_option('gopiplus_displaycategory');
@@ -319,15 +323,10 @@ function gopiplus_shortcode( $atts )
 	$qp_category = get_option('gopiplus_query_posts_category');
 	$slider = get_option('gopiplus_query_slider');
 	
-	if(!is_numeric(@$displaydesc)) { @$displaydesc = 300; } 
-	if(!is_numeric(@$qp_showposts)) { @$qp_showposts = 10; } 
+	if(!is_numeric($displaydesc)) { $displaydesc = 300; } 
+	if(!is_numeric($qp_showposts)) { $qp_showposts = 10; } 
 	
-	@$myfilter = "";
-	
-	//	if(@$qp_showposts <> ""){ @$myfilter = "showposts=".$qp_showposts; }
-	//	if(@$qp_orderby <> ""){ @$myfilter = @$myfilter."&orderby=".$qp_orderby; }
-	//	if(@$qp_order <> ""){ @$myfilter = @$myfilter."&order=".$qp_order; }
-	//	if(@$qp_category <> ""){ @$myfilter = @$myfilter."&cat=".$qp_category; }
+	$myfilter = "";
 	
 	if($slider == ""){ $slider = "scrollLeft"; }
 	
@@ -487,7 +486,8 @@ function gopiplus_shortcode( $atts )
 
 function gopiplus_add_to_menu() 
 {
-	add_options_page('Random post slider', 'Random post slider', 'manage_options', __FILE__, 'gopiplus_admin_options' );
+	add_options_page( __('Random post slider', 'random-post-slider'),  
+				__('Random post slider', 'random-post-slider'), 'manage_options', __FILE__, 'gopiplus_admin_options' );
 }
 
 if (is_admin()) 
@@ -510,6 +510,12 @@ function gopiplus_add_javascript_files()
 	}	
 }
 
+function gopiplus_textdomain() 
+{
+	  load_plugin_textdomain( 'random-post-slider', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+add_action('plugins_loaded', 'gopiplus_textdomain');
 add_shortcode( 'wp-post-slider', 'gopiplus_shortcode' );
 add_action('init', 'gopiplus_add_javascript_files');
 register_activation_hook(__FILE__, 'gopiplus_install');
