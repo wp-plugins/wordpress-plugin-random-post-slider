@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/
 Plugin URI: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Tags: wordpress, plugin, random, post, slider
 Requires at least: 3.4
-Tested up to: 3.8
-Stable tag: 9.1
+Tested up to: 3.9
+Stable tag: 9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -34,22 +34,6 @@ Random post slider wordpress plugin create a post slider on the wordpress websit
 We have three option to install and configure this Image horizontal reel scroll slideshow plugin. 
 
 http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
-
-**My other related plugins**
-
-[Left right image slideshow gallery](http://www.gopiplus.com/work/2011/04/25/wordpress-plugin-left-right-image-slideshow-gallery/)	
-[Image horizontal reel scroll slideshow](http://www.gopiplus.com/work/2011/04/25/wordpress-plugin-up-down-image-slideshow-script/)	
-[Information reel](http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/)	
-[News announcement scroll](http://www.gopiplus.com/work/2011/01/01/news-announcement-scroll/)		
-[Continuous rss scrolling](http://www.gopiplus.com/work/2010/09/05/continuous-rss-scrolling/)		
-[Continuous announcement scroller](http://www.gopiplus.com/work/2010/09/04/continuous-announcement-scroller/)		
-[Vertical scroll recent post](http://www.gopiplus.com/work/2010/07/18/vertical-scroll-recent-post/)		
-[Superb slideshow gallery](http://www.gopiplus.com/work/2010/10/10/superb-slideshow-gallery/)		
-[Email newsletter](http://www.gopiplus.com/work/2010/09/25/email-newsletter/)			
-		 	
-To see my all plugin : [click here](http://www.gopiplus.com/work/plugin-list/)		
-
-Tags: wordpress, plugin, random, post, slider	
 	
 == Installation ==	
 
@@ -97,6 +81,10 @@ http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 2. Admin Screen http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 
 == Upgrade Notice ==
+
+= 9.2 =
+
+1. Tested up to 3.9
 
 = 9.1 =
 
@@ -191,3 +179,7 @@ Added some security feature.
 1. Tested up to 3.8
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
 Plugin *.po file (random-post-slider.po) available in the languages folder.
+
+= 9.2 =
+
+1. Tested up to 3.9

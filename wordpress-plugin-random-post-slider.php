@@ -3,8 +3,8 @@
 Plugin Name: Wordpress plugin random post slider
 Plugin URI: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Description: Wordpress plugin random post slider create a post slider on the wordpress website.
-Author: Gopi.R
-Version: 9.1
+Author: Gopi Ramasamy
+Version: 9.2
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Tags: wordpress, plugin, random, post, slider
