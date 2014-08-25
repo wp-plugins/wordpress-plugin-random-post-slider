@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/
 Plugin URI: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Tags: wordpress, plugin, random, post, slider
 Requires at least: 3.4
-Tested up to: 3.9
-Stable tag: 9.2
+Tested up to: 4.0
+Stable tag: 9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -36,8 +36,6 @@ We have three option to install and configure this Image horizontal reel scroll 
 http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 	
 == Installation ==	
-
-**Installation Instruction & Configuration**  	
 
 **Method 1**	
 
@@ -69,10 +67,7 @@ Q5. Can i display the post based on category?
 
 Q6. Can i display random post in the slider?
 
-Click the below link to see answer for all questions!			
 More info : [click to go](http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/)		
-
-http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/	
 
 == Screenshots ==
 
@@ -81,6 +76,10 @@ http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 2. Admin Screen http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 
 == Upgrade Notice ==
+
+= 9.3 =
+
+1. Tested up to 4.0
 
 = 9.2 =
 
@@ -183,3 +182,7 @@ Plugin *.po file (random-post-slider.po) available in the languages folder.
 = 9.2 =
 
 1. Tested up to 3.9
+
+= 9.3 =
+
+1. Tested up to 4.0
