@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/
 Plugin URI: http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 Tags: wordpress, plugin, random, post, slider
 Requires at least: 3.4
-Tested up to: 4.0
-Stable tag: 9.3
+Tested up to: 4.1
+Stable tag: 9.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -76,6 +76,10 @@ More info : [click to go](http://www.gopiplus.com/work/2011/05/28/wordpress-plug
 2. Admin Screen http://www.gopiplus.com/work/2011/05/28/wordpress-plugin-random-post-slider/
 
 == Upgrade Notice ==
+
+= 9.4 =
+
+1. Tested up to 4.1
 
 = 9.3 =
 
@@ -186,3 +190,7 @@ Plugin *.po file (random-post-slider.po) available in the languages folder.
 = 9.3 =
 
 1. Tested up to 4.0
+
+= 9.4 =
+
+1. Tested up to 4.1
